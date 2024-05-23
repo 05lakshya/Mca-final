@@ -250,9 +250,9 @@ print(data.head())
 
 from pyngrok import ngrok
 
-    ngrok.set_auth_token('2fajI0Fk3xuXCICMrLi74NMoArz_34RiLCugo6J3QtrJwadJG')
-    # from flask import Flask,request
-    # from flask_ngrok import run_with_ngrok
-    ngrok_tunnel = ngrok.connect(5000)
-    print("Public URL:", ngrok_tunnel.public_url)
-    app.run()
+ngrok.set_auth_token('2fajI0Fk3xuXCICMrLi74NMoArz_34RiLCugo6J3QtrJwadJG')
+# from flask import Flask,request
+# from flask_ngrok import run_with_ngrok
+ngrok_tunnel = ngrok.connect(5000)
+print("Public URL:", ngrok_tunnel.public_url)
+app.run()
