@@ -5,6 +5,7 @@ import os
 import requests
 import utilsfuntion
 from fastapi import FastAPI, HTTPException, Query
+from pyngrok import ngrok
 
 from videollava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
 from videollava.conversation import conv_templates, SeparatorStyle
