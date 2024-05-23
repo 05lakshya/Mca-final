@@ -182,7 +182,7 @@ def predict_video(video,inp):
     outputs = tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
     print(outputs)
     return outputs
-from utilsfunction import *
+from utilsfuntion import *
 # http://51.105.246.1:5000/VideoLLaVAImageVideo/?url=<urlhere>&VisionType=<vision type here image or video>&Prompt=<prompt here>
 
 ngrok.set_auth_token('2fajI0Fk3xuXCICMrLi74NMoArz_34RiLCugo6J3QtrJwadJG')
@@ -190,13 +190,7 @@ from flask import Flask,request
 from flask_ngrok import run_with_ngrok
 app = Flask(__name__)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Allow requests from any origin
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["Authorization", "Content-Type"],
-)
+
 @app.get('/api/videolva_vision/')
 def Driver(url:str=Query(...),prompt:str=Query(...),key:str=Query(...)):
 
