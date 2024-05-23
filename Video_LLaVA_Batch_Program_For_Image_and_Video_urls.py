@@ -1,7 +1,9 @@
 import torch
+import pandas as pd
 import time
 import os
 import requests
+import utilsfuntion
 from fastapi import FastAPI, HTTPException, Query
 
 from videollava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
@@ -181,7 +183,7 @@ def predict_video(video,inp):
     outputs = tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
     print(outputs)
     return outputs
-from utilsfunction import *
+from utilsfuntion import *
 # # http://51.105.246.1:5000/VideoLLaVAImageVideo/?url=<urlhere>&VisionType=<vision type here image or video>&Prompt=<prompt here>
 # app=FastAPI()
 # app.add_middleware(
@@ -237,7 +239,6 @@ Make sure the summary is precise, capturing the most significant aspects of the 
     else:
         return "Key error"
 import argparse
-import pandas as pd
 # Make Sure use the same result file which you used for chatUNIVI
 filename='/home/azureuser/Results/results_2024-03-03 15:06:08.572637.csv'
 data=pd.read_csv(filename)
@@ -246,3 +247,12 @@ data['Video LLaVA']=data['Link'].apply(Driver)
 
 data.to_csv(filename,index=False)
 print(data.head())
+
+from pyngrok import ngrok
+
+    ngrok.set_auth_token('2fajI0Fk3xuXCICMrLi74NMoArz_34RiLCugo6J3QtrJwadJG')
+    # from flask import Flask,request
+    # from flask_ngrok import run_with_ngrok
+    ngrok_tunnel = ngrok.connect(5000)
+    print("Public URL:", ngrok_tunnel.public_url)
+    app.run()
