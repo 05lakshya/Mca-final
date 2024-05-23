@@ -183,7 +183,12 @@ def predict_video(video,inp):
     return outputs
 from utilsfunction import *
 # http://51.105.246.1:5000/VideoLLaVAImageVideo/?url=<urlhere>&VisionType=<vision type here image or video>&Prompt=<prompt here>
-app=FastAPI()
+
+ngrok.set_auth_token('2fajI0Fk3xuXCICMrLi74NMoArz_34RiLCugo6J3QtrJwadJG')
+from flask import Flask,request
+from flask_ngrok import run_with_ngrok
+app = Flask(__name__)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allow requests from any origin
@@ -226,8 +231,8 @@ def Driver(url:str=Query(...),prompt:str=Query(...),key:str=Query(...)):
 if __name__ == "__main__":
     from pyngrok import ngrok
     ngrok.set_auth_token('2fajI0Fk3xuXCICMrLi74NMoArz_34RiLCugo6J3QtrJwadJG')
-    # from flask import Flask,request
-    # from flask_ngrok import run_with_ngrok
+    #from flask import Flask,request
+    #from flask_ngrok import run_with_ngrok
     ngrok_tunnel = ngrok.connect(5000)
     print("Public URL:", ngrok_tunnel.public_url)
     app.run()
